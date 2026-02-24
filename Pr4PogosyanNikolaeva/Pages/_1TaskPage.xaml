@@ -8,7 +8,34 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="_1TaskPage">
 
-    <Grid>
-        
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+
+        <Image Grid.Row="0" Source="/Images/Task1.png" Height="200"/>
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="x" FontSize="30" Margin="10"/>
+                <TextBox x:Name="TxtBoxX" Width="200" Text="0" FontSize="30" Margin="0 10 0 10" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="y" FontSize="30" Margin="10"/>
+                <TextBox x:Name="TxtBoxY" Width="200" Text="0" FontSize="30" Margin="0 10 0 10" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="z" FontSize="30" Margin="10"/>
+                <TextBox x:Name="TxtBoxZ"  Width="200" Text="0" FontSize="30" Margin="0 10 0 10" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Ответ" FontSize="40" Margin="10"/>
+                <TextBox x:Name="TxtBoxRes" Width="200" FontSize="40" Margin="0 10 0 10"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>
