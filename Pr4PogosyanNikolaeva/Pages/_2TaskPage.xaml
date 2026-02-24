@@ -8,9 +8,36 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="_2TaskPage">
 
-    <Grid Background="White">
+    <Grid Background="White" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <!--<ColumnDefinition Width="auto"/>-->
+        </Grid.ColumnDefinitions>
+        <Image Source="/Images/Task2.png" Grid.Row="0" Grid.ColumnSpan="3" Height="200"/>
+        
+        <TextBlock Text="x" Grid.Row="1" Grid.Column="0" Margin="10"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Width="200" Height="30" FontSize="16"/>
+        <TextBlock Text="m" Grid.Row="2" Grid.Column="0" Margin="10"/>
+
+        <TextBox Grid.Row="2" Grid.Column="1" Width="200" Height="30" FontSize="16"/>
+        <StackPanel Grid.Row="3" Grid.Column="1" Grid.RowSpan="2">
+            <RadioButton GroupName="0" Content="sh(x)" Margin="0 5"/>
+            <RadioButton GroupName="0" Content="x^2" Margin="0 5"/>
+            <RadioButton GroupName="0" Content="e^x" Margin="0 5"/>
+        </StackPanel>
+        <TextBlock Text="Ответ" Grid.Row="5" Margin="5"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Height="30" FontSize="16"/>
+        <Button Content="Вычислить" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left" Width="100" Height="30"/>
+        <Button Content="Очистить" Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left" Width="100" Height="30"/>
     </Grid>
 </Page>
