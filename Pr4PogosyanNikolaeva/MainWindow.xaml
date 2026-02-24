@@ -7,6 +7,27 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <TabControl>
+            <TabItem Header="Задание 1">
+                <Grid Background="#FFE5E5E5">
+                    <Frame Source="/Pages/_1TaskPage.xaml" />
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Задание 2">
+                <Grid Background="#FFE5E5E5">
+                    <Frame Source="/Pages/_2TaskPage.xaml" />
+                    
+                </Grid>
+            </TabItem>
+            <TabItem Header="Задание 3">
+                <Grid Background="#FFE5E5E5">
+                    <Frame Source="/Pages/_3TaskPage.xaml" />
+                    
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Border BorderBrush="Black" BorderThickness="1"/>
+
     </Grid>
 </Window>
