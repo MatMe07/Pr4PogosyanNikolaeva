@@ -20,9 +20,48 @@ namespace Pr4PogosyanNikolaeva.Pages
     /// </summary>
     public partial class _2TaskPage : Page
     {
+
+        public double x = 0;
+        public bool x_znak = false;
+        public double y = 0;
+        public bool y_znak = false;
         public _2TaskPage()
         {
             InitializeComponent();
+        }
+
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnCalculate_Click(object sender, RoutedEventArgs e)
+        {
+            
+            boxAnswer.Text = "";
+        }
+
+        private void txtX_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CheckInput.CheckNullOrWSpace(txtX);
+
+        }
+
+        private void txtX_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !CheckInput.Check(e.Text[0], txtX.Text + e.Text[0], out x, ref x_znak);
+        }
+
+        private void txtY_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CheckInput.CheckNullOrWSpace(txtY);
+
+        }
+
+        private void txtY_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !CheckInput.Check(e.Text[0], txtY.Text + e.Text[0], out y, ref y_znak);
+
         }
     }
 }
