@@ -15,26 +15,28 @@
         </Grid.RowDefinitions>
 
 
-        <Image Grid.Row="0" Source="/Images/Task1.png" Height="200"/>
+        <Image Grid.Row="0" Source="/Images/Task1.png" Height="150"/>
         <StackPanel Grid.Row="1" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="x" FontSize="30" Margin="10"/>
-                <TextBox x:Name="TxtBoxX" Width="200" Text="0" FontSize="30" Margin="0 10 0 10" />
+                <TextBlock Text="x" FontSize="20" Margin="10"/>
+                <TextBox x:Name="TxtBoxX" Width="200" Text="0" FontSize="20" Margin="0 10 0 10" PreviewTextInput="TxtBoxX_PreviewTextInput" TextChanged="TxtBoxX_TextChanged"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="y" FontSize="30" Margin="10"/>
-                <TextBox x:Name="TxtBoxY" Width="200" Text="0" FontSize="30" Margin="0 10 0 10" />
+                <TextBlock Text="y" FontSize="20" Margin="10"/>
+                <TextBox x:Name="TxtBoxY" Width="200" Text="0" FontSize="20" Margin="0 10 0 10" PreviewTextInput="TxtBoxY_PreviewTextInput" TextChanged="TxtBoxY_TextChanged"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="z" FontSize="30" Margin="10"/>
-                <TextBox x:Name="TxtBoxZ"  Width="200" Text="0" FontSize="30" Margin="0 10 0 10" />
+                <TextBlock Text="z" FontSize="20" Margin="10"/>
+                <TextBox x:Name="TxtBoxZ"  Width="200" Text="0" FontSize="20" Margin="0 10 0 10" PreviewTextInput="TxtBoxZ_PreviewTextInput" TextChanged="TxtBoxZ_TextChanged"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Ответ" FontSize="40" Margin="10"/>
-                <TextBox x:Name="TxtBoxRes" Width="200" FontSize="40" Margin="0 10 0 10"/>
+                <TextBlock Text="Ответ" FontSize="20" Margin="10"/>
+                <TextBox x:Name="TxtBoxRes" Width="200" FontSize="20" Margin="0 10 0 10" Text="0"/>
+                <Button x:Name="BtnCalculate" Content="Вычислить" Height="30" Width="100" FontSize="15" Background="LightBlue" Margin="10" Click="BtnCalculate_Click"/>
+                <Button x:Name="BtnClear" Content="Очистить" Height="30" Width="100" Margin="10" FontSize="15" Background="LightBlue" Click="BtnClear_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>
