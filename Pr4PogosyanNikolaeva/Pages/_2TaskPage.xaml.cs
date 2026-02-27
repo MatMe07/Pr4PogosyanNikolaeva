@@ -21,8 +21,8 @@ namespace Pr4PogosyanNikolaeva.Pages
     public partial class _2TaskPage : Page
     {
 
-        public double x = 0;
         public double c = 0;
+        public double x = 0;
         public bool x_znak = false;
         public double y = 0;
         public bool y_znak = false;
