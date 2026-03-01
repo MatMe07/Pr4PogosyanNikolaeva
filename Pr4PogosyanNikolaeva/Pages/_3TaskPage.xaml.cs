@@ -70,19 +70,19 @@ namespace Pr4PogosyanNikolaeva.Pages
                 boxAnswer.Clear();
                 FunctionChart.Series[0].Points.Clear();
 
-
-                for (double x = x0; x <= xk; x += dx)
+                int i = 0;
+                for (double x = x0; x <= xk; x += dx, i++)
                 {
                     double y = CalculateFunction(x, b);
 
                     if (!double.IsNaN(y) && !double.IsInfinity(y))
                     {
                         FunctionChart.Series[0].Points.AddXY(x, y);
-                        boxAnswer.AppendText($"x = {x:F3}\t y = {y:F6}\r\n");
+                        boxAnswer.AppendText($"x{i} = {x:F3}\t y{i} = {y:F6}\r\n");
                     }
                     else
                     {
-                        boxAnswer.AppendText($"x = {x:F3}\t y = не определено (разрыв)\r\n");
+                        boxAnswer.AppendText($"x{i} = {x:F3}\t y{i} = не определено (разрыв)\r\n");
                     }
                 }
 
@@ -116,22 +116,22 @@ namespace Pr4PogosyanNikolaeva.Pages
 
         private void TxtBoxB_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = !CheckInput.Check(e.Text[0], txtB.Text + e.Text[0], out b, ref b_znak);
+            e.Handled = !CheckInput.Check(e.Text[0], txtB.Text, out b);
         }
 
         private void TxtBoxX0_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = !CheckInput.Check(e.Text[0], txtX0.Text + e.Text[0], out x0, ref x0_znak);
+            e.Handled = !CheckInput.Check(e.Text[0], txtX0.Text, out x0);
         }
 
         private void TxtBoxXk_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = !CheckInput.Check(e.Text[0], txtXK.Text + e.Text[0], out xk, ref xk_znak);
+            e.Handled = !CheckInput.Check(e.Text[0], txtXK.Text , out xk);
         }
 
         private void TxtBoxDx_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = !CheckInput.Check(e.Text[0], txtDX.Text + e.Text[0], out dx, ref dx_znak);
+            e.Handled = !CheckInput.Check(e.Text[0], txtDX.Text, out dx);
         }
 
         private void TxtBoxB_TextChanged(object sender, TextChangedEventArgs e)

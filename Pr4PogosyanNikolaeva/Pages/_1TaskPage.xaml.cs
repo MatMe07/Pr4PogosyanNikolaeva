@@ -56,6 +56,8 @@ namespace Pr4PogosyanNikolaeva.Pages
         private void TxtBoxX_TextChanged(object sender, TextChangedEventArgs e)
         {
             CheckInput.CheckNullOrWSpace(TxtBoxX);
+
+
         }
 
         private void BtnClear_Click(object sender, RoutedEventArgs e)
@@ -69,17 +71,19 @@ namespace Pr4PogosyanNikolaeva.Pages
 
         private void TxtBoxX_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = !CheckInput.Check(e.Text[0], TxtBoxX.Text + e.Text[0], out x, ref x_znak);
+            e.Handled = !CheckInput.Check(e.Text[0], TxtBoxX.Text, out x);
+            
+            //TxtBoxX.Text = x.ToString();
         }
 
         private void TxtBoxY_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = !CheckInput.Check(e.Text[0], TxtBoxY.Text + e.Text[0], out y, ref y_znak);
+            e.Handled = !CheckInput.Check(e.Text[0], TxtBoxY.Text, out y);
         }
 
         private void TxtBoxZ_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = !CheckInput.Check(e.Text[0], TxtBoxZ.Text + e.Text[0], out z, ref z_znak);
+            e.Handled = !CheckInput.Check(e.Text[0], TxtBoxZ.Text, out z);
         }
     }
 }

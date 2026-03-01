@@ -4,26 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Pr4PogosyanNikolaeva
 {
     public static class CheckInput
     {
 
-        static public bool Check(char simv, string num, out double n, ref bool znak)
+        static public bool Check(char simv, string num, out double n, string inputText = "")
         {
             n = 0;
-            if (simv == ',')
+
+            string newText = num + simv.ToString();
+
+            if (inputText.Contains(".") && newText.Count(c => c == '.') > 1)
+                return false;
+
+            if (simv == ',') return false;
+            
+
+            if (simv == '-')
             {
-                if (znak) return false;
-                else
-                {
-                    num = $"{num}0";
-                    znak = false;
-                }
+                return true;
+                //return selectionInd != num.Length-1;
             }
 
-            return double.TryParse(num, out n);
+            return double.TryParse(newText, out n);
         }
 
 
@@ -31,22 +37,61 @@ namespace Pr4PogosyanNikolaeva
         {
             if (textBox != null)
             {
-                if (textBox.Text.Length > 1)
-                {
-                    if (textBox.Text.EndsWith(" "))
-                        textBox.Text = textBox.Text.Substring(0, textBox.Text.Length - 1);
-                    else if (textBox.Text.StartsWith(" "))
-                        textBox.Text = textBox.Text.Substring(1, textBox.Text.Length - 1);
-                    else if (textBox.Text.StartsWith("0"))
-                        textBox.Text = textBox.Text.Substring(1, textBox.Text.Length - 1);
 
+                string text = textBox.Text;
+                int selectionInd = text.Length;
+
+
+                text = text.Replace(" ", "");
+
+                if (string.IsNullOrEmpty(text))
+                {
+
+                    textBox.Text = "0";
+                    textBox.Select(1, 0);
+                    return;
                 }
 
-                if (textBox.Text.Length == 0) textBox.Text = "0";
+                if (text == "-")
+                {
+                    textBox.Text = "-";
+                    textBox.Select(1, 0);
+                    return;
+                }
 
-                //textBox.Text = x.ToString();
-                textBox.Select(textBox.Text.Length, 0);
+                else if (text.Count(s => s == '-') > 1)
+                    text = text.Replace("-", "");
+                else if (text.Count(s => s == '-') == 1 || text.EndsWith("-"))
+                {
+                    //znak = true;
+                    //selectionInd = text.LastIndexOf('-')+1;
+                    text = text.Replace("-", "");
+                    text = "-" + text;
+                }
+
+
+
+                if (text.Length > 1 && text[0] == '0' && text[1] != '.')
+                {
+                    text = text.TrimStart('0');
+                    if (string.IsNullOrEmpty(text) || text == ".")
+                        text = "0";
+                }
+                else if (text.StartsWith("-0") && text.Length > 2 && text[2] != '.' && text[2] != '0')
+                {
+                    text = "-" + text.Substring(2).TrimStart('0');
+                    if (text == "-" || string.IsNullOrEmpty(text))
+                        text = "0";
+                }
+
+                //double.TryParse(text, out double value);
+                textBox.Text = text;
+
+                textBox.Select(selectionInd, 0);
             }
+        
         }
+
+
     }
 }

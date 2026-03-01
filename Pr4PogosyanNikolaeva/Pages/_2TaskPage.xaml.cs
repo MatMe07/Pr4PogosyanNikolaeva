@@ -37,6 +37,10 @@ namespace Pr4PogosyanNikolaeva.Pages
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
             boxAnswer.Text = "0";
+            txtX.Text = "0";
+            txtY.Text = "0";
+            
+
         }
 
         public double Sh(double n)
@@ -81,7 +85,7 @@ namespace Pr4PogosyanNikolaeva.Pages
 
         private void txtX_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = !CheckInput.Check(e.Text[0], txtX.Text + e.Text[0], out x, ref x_znak);
+            e.Handled = !CheckInput.Check(e.Text[0], txtX.Text, out x);
         }
 
         private void txtY_TextChanged(object sender, TextChangedEventArgs e)
@@ -92,7 +96,7 @@ namespace Pr4PogosyanNikolaeva.Pages
 
         private void txtY_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = !CheckInput.Check(e.Text[0], txtY.Text + e.Text[0], out y, ref y_znak);
+            e.Handled = !CheckInput.Check(e.Text[0], txtY.Text, out y);
 
         }
 
