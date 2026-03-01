@@ -29,26 +29,26 @@
         <Image Source="/Images/Task3.png" Grid.Row="0" Grid.ColumnSpan="3" Height="100" />
 
         <TextBlock Text="x0" Grid.Row="1" Grid.Column="0" Margin="10" FontSize="16"/>
-        <TextBox HorizontalAlignment="Left" x:Name="txtX0" Grid.Row="1" Grid.Column="1" MinWidth="200" Height="30" FontSize="16" PreviewTextInput="txtX_PreviewTextInput" Text="0" TextChanged="txtX_TextChanged"/>
+        <TextBox HorizontalAlignment="Left" x:Name="txtX0" Grid.Row="1" Grid.Column="1" MinWidth="200" Height="30" FontSize="16" PreviewTextInput="TxtBoxX0_PreviewTextInput" Text="0" TextChanged="TxtBoxB_TextChanged"/>
         <TextBlock Text="xk" Grid.Row="2" Grid.Column="0" Margin="10" FontSize="16"/>
-        <TextBox HorizontalAlignment="Left" x:Name="txtXK" Grid.Row="2" Grid.Column="1" MinWidth="200" Height="30" FontSize="16" PreviewTextInput="txtX_PreviewTextInput" Text="0" TextChanged="txtX_TextChanged"/>
+        <TextBox HorizontalAlignment="Left" x:Name="txtXK" Grid.Row="2" Grid.Column="1" MinWidth="200" Height="30" FontSize="16" PreviewTextInput="TxtBoxXk_PreviewTextInput" Text="0" TextChanged="TxtBoxB_TextChanged"/>
         <TextBlock Text="dx" Grid.Row="3" Grid.Column="0" Margin="10" FontSize="16"/>
-        <TextBox HorizontalAlignment="Left" x:Name="txtDX" Grid.Row="3" Grid.Column="1" MinWidth="200" Height="30" FontSize="16" PreviewTextInput="txtX_PreviewTextInput" Text="0" TextChanged="txtX_TextChanged"/>
+        <TextBox HorizontalAlignment="Left" x:Name="txtDX" Grid.Row="3" Grid.Column="1" MinWidth="200" Height="30" FontSize="16" PreviewTextInput="TxtBoxDx_PreviewTextInput" Text="0" TextChanged="TxtBoxB_TextChanged"/>
         <TextBlock Text="b" Grid.Row="4" Grid.Column="0" Margin="10" FontSize="16"/>
-        <TextBox HorizontalAlignment="Left" x:Name="txtB" Grid.Row="4" Grid.Column="1" MinWidth="200" Height="30" FontSize="16" PreviewTextInput="txtX_PreviewTextInput" Text="0" TextChanged="txtX_TextChanged"/>
+        <TextBox HorizontalAlignment="Left" x:Name="txtB" Grid.Row="4" Grid.Column="1" MinWidth="200" Height="30" FontSize="16" PreviewTextInput="TxtBoxB_PreviewTextInput" Text="0" TextChanged="TxtBoxB_TextChanged"/>
         
         <!--<TextBlock Text="y" Grid.Row="2" Grid.Column="0" Margin="10" FontSize="16"/>-->
 
         <TextBlock Text="Ответ" Grid.Row="5" Margin="5" FontSize="16" FontWeight="Medium"/>
         
-        <TextBox x:Name="boxAnswer" MinWidth="150" Grid.Row="5" Grid.Column="1" MinHeight="50"  FontSize="16" IsEnabled="False"/>
+        <TextBox x:Name="boxAnswer" MinWidth="150" Grid.Row="5" Grid.Column="1" MinHeight="50"  FontSize="16"/>
        
         
         <Button Content="Вычислить" x:Name="btnCalculate" Margin="0 5 0 0" Grid.Column="1" Grid.Row="6"  Height="30" FontSize="15" Padding="5 0" Click="btnCalculate_Click"/>
         <Button Content="Очистить" Grid.Column="1" x:Name="btnClear" Margin="0 5 0 0" Grid.Row="7"  Height="30" FontSize="15" Padding="5 0" Click="btnClear_Click"/>
         <WindowsFormsHost Grid.Column="2" Grid.RowSpan="5"   Grid.Row="1">
 
-            <charts:Chart x:Name="ChartPayments">
+            <charts:Chart x:Name="FunctionChart">
                 <charts:Chart.Legends>
                     <charts:Legend>
 
