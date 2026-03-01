@@ -49,7 +49,7 @@ namespace Pr4PogosyanNikolaeva.Pages
 
         private void txtX_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = !CheckInput.Check(e.Text[0], txtX.Text + e.Text[0], out x, ref x_znak);
+            e.Handled = !CheckInput.Check(e.Text[0], txtB.Text + e.Text[0], out x, ref x_znak);
 
 
         }
@@ -57,7 +57,7 @@ namespace Pr4PogosyanNikolaeva.Pages
         private void txtX_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-            CheckInput.CheckNullOrWSpace(txtX);
+            CheckInput.CheckNullOrWSpace(txtB);
         }
 
 
