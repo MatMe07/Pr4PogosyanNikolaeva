@@ -23,21 +23,27 @@
             <ColumnDefinition Width="*"/>
             <!--<ColumnDefinition Width="auto"/>-->
         </Grid.ColumnDefinitions>
-        <Image Source="/Images/Task2.png" Grid.Row="0" Grid.ColumnSpan="3" Height="150" />
-        
-        <TextBlock Text="x" Grid.Row="1" Grid.Column="0" Margin="10" FontSize="20"/>
-        <TextBox HorizontalAlignment="Left" x:Name="txtX" Grid.Row="1" Grid.Column="1" MinWidth="200"  VerticalAlignment="Center" FontSize="20" PreviewTextInput="txtX_PreviewTextInput" Text="0" TextChanged="txtX_TextChanged"/>
-        <TextBlock Text="y" Grid.Row="2" Grid.Column="0" Margin="10" FontSize="20"/>
+        <Image Source="/Images/Task2.png" Grid.Row="0" Grid.ColumnSpan="3" Height="150" ToolTip="Формула задания 2"/>
 
-        <TextBox HorizontalAlignment="Left" x:Name="txtY" Grid.Row="2" Grid.Column="1" MinWidth="200"  VerticalAlignment="Center" FontSize="20" Text="0" TextChanged="txtY_TextChanged" PreviewTextInput="txtY_PreviewTextInput"/>
-        <StackPanel Grid.Row="3" Grid.Column="1" Grid.RowSpan="2">
-            <RadioButton  GroupName="0" Content="sh(x)" Margin="0 5" x:Name="rad1" IsChecked="True" Checked="rad1_Checked"/>
-            <RadioButton GroupName="0" Content="x^2" Margin="0 5" x:Name="rad2" Checked="rad1_Checked"/>
-            <RadioButton GroupName="0" Content="e^x" Margin="0 5" x:Name="rad3" Checked="rad1_Checked"/>
+        <TextBlock Text="x" Grid.Row="1" Grid.Column="0" Margin="10" FontSize="20" ToolTip="Переменная x"/>
+        <TextBox HorizontalAlignment="Left" x:Name="txtX" Grid.Row="1" Grid.Column="1" MinWidth="200"  VerticalAlignment="Center" FontSize="20"
+                 PreviewTextInput="txtX_PreviewTextInput" Text="0" TextChanged="txtX_TextChanged" ToolTip="Введите значение переменной x"/>
+
+        <TextBlock Text="y" Grid.Row="2" Grid.Column="0" Margin="10" FontSize="20" ToolTip="Переменная y"/>
+        <TextBox HorizontalAlignment="Left" x:Name="txtY" Grid.Row="2" Grid.Column="1" MinWidth="200"  VerticalAlignment="Center" FontSize="20" 
+                 Text="0" TextChanged="txtY_TextChanged" PreviewTextInput="txtY_PreviewTextInput" ToolTip="Введите значение переменной y"/>
+
+        <StackPanel Grid.Row="3" Grid.Column="1" Grid.RowSpan="2" ToolTip="Выберите функцию для вычисления">
+            <RadioButton  GroupName="0" Content="sh(x)" Margin="0 5" x:Name="rad1" IsChecked="True" Checked="rad1_Checked"  ToolTip="Гиперболический синус sh(x)"/>
+            <RadioButton GroupName="0" Content="x^2" Margin="0 5" x:Name="rad2" Checked="rad1_Checked" ToolTip="x в квадрате"/>
+            <RadioButton GroupName="0" Content="e^x" Margin="0 5" x:Name="rad3" Checked="rad1_Checked" ToolTip="Экспонента e^x"/>
         </StackPanel>
-        <TextBlock Text="Ответ" Grid.Row="5" Margin="5" FontSize="20" FontWeight="Medium"/>
-        <TextBox x:Name="boxAnswer" MinWidth="150" Grid.Row="5" Grid.Column="1" Height="30" FontSize="20" IsReadOnly="True"/>
-        <Button Content="Вычислить" x:Name="btnCalculate" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left" Width="100" Height="30" FontSize="15" Padding="5 0" Click="btnCalculate_Click"/>
-        <Button Content="Очистить" Grid.Column="2" x:Name="btnClear" Grid.Row="4" HorizontalAlignment="Left" Width="100" Height="30" FontSize="15" Padding="5 0" Click="btnClear_Click"/>
+
+        <TextBlock Text="Ответ" Grid.Row="5" Margin="5" FontSize="20" FontWeight="Medium" ToolTip="Результат вычисления"/>
+        <TextBox x:Name="boxAnswer" MinWidth="150" Grid.Row="5" Grid.Column="1" Height="30" FontSize="20" IsReadOnly="True" ToolTip="Отображение результата вычисления"/>
+        <Button Content="Вычислить" x:Name="btnCalculate" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left" Width="100" Height="30" 
+                FontSize="15" Padding="5 0" Click="btnCalculate_Click" ToolTip="Вычислить значение по формуле с выбранной функцией"/>
+        <Button Content="Очистить" Grid.Column="2" x:Name="btnClear" Grid.Row="4" HorizontalAlignment="Left" Width="100" Height="30" FontSize="15" 
+                Padding="5 0" Click="btnClear_Click" ToolTip="Сбросить все поля"/>
     </Grid>
 </Page>

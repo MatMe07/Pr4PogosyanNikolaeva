@@ -8,19 +8,19 @@
         Title="MainWindow" Height="500" Width="800" Closing="Window_Closing">
     <Grid>
         <TabControl>
-            <TabItem Header="Задание 1">
+            <TabItem Header="Задание 1" ToolTip="Перейти к заданию 1 - вычисление функции с переменными x, y, z">
                 <Grid Background="#FFE5E5E5">
                     <Frame Source="/Pages/_1TaskPage.xaml" />
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Задание 2">
+            <TabItem Header="Задание 2" ToolTip="Перейти к заданию 2 - вычисление функции с выбором sh(x), x² или e^x">
                 <Grid Background="#FFE5E5E5">
                     <Frame Source="/Pages/_2TaskPage.xaml" />
                     
                 </Grid>
             </TabItem>
-            <TabItem Header="Задание 3">
+            <TabItem Header="Задание 3" ToolTip="Перейти к заданию 3 - построение графика функции с параметром b">
                 <Grid Background="#FFE5E5E5">
                     <Frame Source="/Pages/_3TaskPage.xaml" />
                     

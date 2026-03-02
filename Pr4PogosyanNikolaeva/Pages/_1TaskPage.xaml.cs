@@ -30,15 +30,36 @@ namespace Pr4PogosyanNikolaeva.Pages
 
         private void BtnCalculate_Click(object sender, RoutedEventArgs e)
         {
-          
 
-            res = (Math.Pow(
-               y + Math.Pow(x - 1, (1.0 / 3.0)), (1.0 / 4.0)))
-                /
-                (Math.Abs(x - y) * (
-                Math.Pow(Math.Sin(z), 2)
-                + Math.Tan(z)));
-            TxtBoxRes.Text = res.ToString();
+            try
+            {
+                if (Math.Abs(x - y) < 1e-10)
+                {
+                    MessageBox.Show("Ошибка: деление на ноль (|x-y| = 0)", "Ошибка",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                if (Math.Abs(Math.Cos(z) % Math.PI) < 1e-10)
+                {
+                    MessageBox.Show("Ошибка: тангенс не определен (cos(z) = 0)", "Ошибка",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                res = (Math.Pow(
+                    y + Math.Pow(x - 1, (1.0 / 3.0)), (1.0 / 4.0)))
+                    /
+                    (Math.Abs(x - y) * (
+                    Math.Pow(Math.Sin(z), 2)
+                    + Math.Tan(z)));
+                TxtBoxRes.Text = res.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка вычисления: {ex.Message}");
+            }
+
+            
          
 
         }

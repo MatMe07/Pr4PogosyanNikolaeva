@@ -15,28 +15,33 @@
         </Grid.RowDefinitions>
 
 
-        <Image Grid.Row="0" Source="/Images/Task1.png" Height="150"/>
+        <Image Grid.Row="0" Source="/Images/Task1.png" Height="150" ToolTip="Формула задания 1"/>
         <StackPanel Grid.Row="1" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="x" FontSize="20" Margin="10"/>
-                <TextBox x:Name="TxtBoxX" Width="200" Text="0" FontSize="20" Margin="0 10 0 10" PreviewTextInput="TxtBoxX_PreviewTextInput" TextChanged="TxtBoxX_TextChanged"/>
+                <TextBlock Text="x" FontSize="20" Margin="10" ToolTip="Переменная x"/>
+                <TextBox x:Name="TxtBoxX"  Width="200" Text="0" FontSize="20" Margin="0 10 0 10" 
+                         PreviewTextInput="TxtBoxX_PreviewTextInput" TextChanged="TxtBoxX_TextChanged" ToolTip="Введите значение переменной x"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="y" FontSize="20" Margin="10"/>
-                <TextBox x:Name="TxtBoxY" Width="200" Text="0"  VerticalAlignment="Center" FontSize="20" Margin="0 10 0 10" PreviewTextInput="TxtBoxY_PreviewTextInput" TextChanged="TxtBoxY_TextChanged"/>
+                <TextBlock Text="y" FontSize="20" Margin="10" ToolTip="Переменная y"/>
+                <TextBox x:Name="TxtBoxY" Width="200" Text="0"  VerticalAlignment="Center" FontSize="20" Margin="0 10 0 10" 
+                         PreviewTextInput="TxtBoxY_PreviewTextInput" TextChanged="TxtBoxY_TextChanged" ToolTip="Введите значение переменной y"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="z" FontSize="20" Margin="10"/>
-                <TextBox x:Name="TxtBoxZ"  Width="200" Text="0"  VerticalAlignment="Center" FontSize="20" Margin="0 10 0 10" PreviewTextInput="TxtBoxZ_PreviewTextInput" TextChanged="TxtBoxZ_TextChanged"/>
+                <TextBlock Text="z" FontSize="20" Margin="10" ToolTip="Переменная z" />
+                <TextBox x:Name="TxtBoxZ"  Width="200" Text="0"  VerticalAlignment="Center" FontSize="20" Margin="0 10 0 10" 
+                         PreviewTextInput="TxtBoxZ_PreviewTextInput" TextChanged="TxtBoxZ_TextChanged" ToolTip="Введите значение переменной z"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Ответ" FontSize="20" Margin="10"/>
-                <TextBox x:Name="TxtBoxRes" IsReadOnly="True" Width="200" FontSize="20" Margin="0 10 0 10" Text="0"/>
-                <Button x:Name="BtnCalculate" Content="Вычислить" Height="30" Width="100" FontSize="15" Background="LightBlue" Margin="10" Click="BtnCalculate_Click"/>
-                <Button x:Name="BtnClear" Content="Очистить" Height="30" Width="100" Margin="10" FontSize="15" Background="LightBlue" Click="BtnClear_Click"/>
+                <TextBlock Text="Ответ" FontSize="20" Margin="10" ToolTip="Результат вычисления функции"/>
+                <TextBox x:Name="TxtBoxRes" IsReadOnly="True" Width="200" FontSize="20" Margin="0 10 0 10" Text="0" ToolTip="Отображение результата вычисления"/>
+                <Button x:Name="BtnCalculate" Content="Вычислить" Height="30" Width="100" FontSize="15" 
+                        Background="LightBlue" Margin="10" Click="BtnCalculate_Click" ToolTip="Нажмите для вычисления значения функции по введенным x, y, z"/>
+                <Button x:Name="BtnClear" Content="Очистить" Height="30" Width="100" Margin="10"
+                        FontSize="15" Background="LightBlue" Click="BtnClear_Click" ToolTip="Сбросить все поля к начальным значениям (0)"/>
             </StackPanel>
         </StackPanel>
     </Grid>
