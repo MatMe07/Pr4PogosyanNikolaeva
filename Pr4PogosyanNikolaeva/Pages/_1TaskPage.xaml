@@ -26,13 +26,13 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="y" FontSize="20" Margin="10" ToolTip="Переменная y"/>
                 <TextBox x:Name="TxtBoxY" Width="200" Text="0"  VerticalAlignment="Center" FontSize="20" Margin="0 10 0 10" 
-                         PreviewTextInput="TxtBoxY_PreviewTextInput" TextChanged="TxtBoxY_TextChanged" ToolTip="Введите значение переменной y"/>
+                         PreviewTextInput="TxtBoxY_PreviewTextInput" TextChanged="TxtBoxX_TextChanged" ToolTip="Введите значение переменной y"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="z" FontSize="20" Margin="10" ToolTip="Переменная z" />
                 <TextBox x:Name="TxtBoxZ"  Width="200" Text="0"  VerticalAlignment="Center" FontSize="20" Margin="0 10 0 10" 
-                         PreviewTextInput="TxtBoxZ_PreviewTextInput" TextChanged="TxtBoxZ_TextChanged" ToolTip="Введите значение переменной z"/>
+                         PreviewTextInput="TxtBoxZ_PreviewTextInput" TextChanged="TxtBoxX_TextChanged" ToolTip="Введите значение переменной z"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">

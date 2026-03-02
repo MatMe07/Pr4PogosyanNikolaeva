@@ -50,11 +50,11 @@
         <TextBox x:Name="boxAnswer" IsReadOnly="True" MinWidth="150" Grid.Row="5" Grid.Column="1" MinHeight="50" MaxHeight="100" MaxWidth="200" 
                  FontSize="16" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" 
                  ToolTip="Отображение всех вычисленных значений x и y"/>
-       
-        
-        <Button Content="Вычислить" x:Name="btnCalculate" Margin="0 5 0 0" Grid.Column="1" Grid.Row="6"  Height="30" FontSize="15" Padding="5 0" 
+
+
+        <Button Content="Вычислить" x:Name="btnCalculate" Margin="0 5 0 0" Grid.Column="1" Grid.Row="6" Background="LightBlue" Height="30" FontSize="15" Padding="5 0" 
                 Click="btnCalculate_Click" ToolTip="Построить график и вычислить значения функции"/>
-        <Button Content="Очистить" Grid.Column="1" x:Name="btnClear" Margin="0 5 0 0" Grid.Row="7"  Height="30" FontSize="15" Padding="5 0" 
+        <Button Content="Очистить" Grid.Column="1" x:Name="btnClear" Margin="0 5 0 0" Grid.Row="7" Background="LightBlue"  Height="30" FontSize="15" Padding="5 0" 
                 Click="btnClear_Click" ToolTip="Очистить все поля и график"/>
         <WindowsFormsHost Grid.Column="2" Grid.RowSpan="5" Grid.Row="1" ToolTip="Область построения графика функции">
 

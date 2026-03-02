@@ -115,6 +115,10 @@ namespace Pr4PogosyanNikolaeva.Pages
             txtDX.Text = "0";
             boxAnswer.Clear();
             FunctionChart.Series[0].Points.Clear();
+            b = 0;
+            x0 = 0;
+            xk = 0;
+            dx = 0;
 
             //b_znak = false;
             //x0_znak = false;

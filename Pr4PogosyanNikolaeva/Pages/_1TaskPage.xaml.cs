@@ -65,24 +65,15 @@ namespace Pr4PogosyanNikolaeva.Pages
                 MessageBox.Show($"Ошибка вычисления: {ex.Message}");
             }
 
-            
          
 
         }
 
-        private void TxtBoxZ_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            CheckInput.CheckNullOrWSpace(TxtBoxZ);
-        }
-
-        private void TxtBoxY_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            CheckInput.CheckNullOrWSpace(TxtBoxY);
-        }
+        
 
         private void TxtBoxX_TextChanged(object sender, TextChangedEventArgs e)
         {
-            CheckInput.CheckNullOrWSpace(TxtBoxX);
+            CheckInput.CheckNullOrWSpace(sender as TextBox);
 
 
         }
@@ -93,7 +84,12 @@ namespace Pr4PogosyanNikolaeva.Pages
             TxtBoxY.Text = "0";
             TxtBoxZ.Text = "0";
             TxtBoxRes.Text = "0";
-            
+            x = 0;
+            y = 0;
+            z = 0;
+            res = 0;
+
+
         }
 
         private void TxtBoxX_PreviewTextInput(object sender, TextCompositionEventArgs e)

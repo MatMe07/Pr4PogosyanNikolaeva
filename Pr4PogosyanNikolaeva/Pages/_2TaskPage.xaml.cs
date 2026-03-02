@@ -39,6 +39,9 @@ namespace Pr4PogosyanNikolaeva.Pages
             boxAnswer.Text = "0";
             txtX.Text = "0";
             txtY.Text = "0";
+            x = 0;
+            y = 0;
+            c = 0;
             
 
         }
@@ -84,7 +87,7 @@ namespace Pr4PogosyanNikolaeva.Pages
 
         private void txtX_TextChanged(object sender, TextChangedEventArgs e)
         {
-            CheckInput.CheckNullOrWSpace(txtX);
+            CheckInput.CheckNullOrWSpace(sender as TextBox);
 
         }
 
@@ -93,17 +96,14 @@ namespace Pr4PogosyanNikolaeva.Pages
             e.Handled = !CheckInput.Check(e.Text[0], txtX.Text, out x);
         }
 
-        private void txtY_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            CheckInput.CheckNullOrWSpace(txtY);
-
-        }
-
         private void txtY_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = !CheckInput.Check(e.Text[0], txtY.Text, out y);
-
         }
+
+  
+
+       
 
         private void rad1_Checked(object sender, RoutedEventArgs e)
         {
