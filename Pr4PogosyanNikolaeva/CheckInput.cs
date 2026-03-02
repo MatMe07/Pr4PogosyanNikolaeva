@@ -39,7 +39,7 @@ namespace Pr4PogosyanNikolaeva
             {
 
                 string text = textBox.Text;
-                int selectionInd = text.Length;
+                int selectionInd = textBox.SelectionStart;
 
 
                 text = text.Replace(" ", "");

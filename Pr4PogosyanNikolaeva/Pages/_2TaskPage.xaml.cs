@@ -23,9 +23,9 @@ namespace Pr4PogosyanNikolaeva.Pages
 
         public double c = 0;
         public double x = 0;
-        public bool x_znak = false;
+        //public bool x_znak = false;
         public double y = 0;
-        public bool y_znak = false;
+        //public bool y_znak = false;
         public Func<double, double> func;
         public _2TaskPage()
         {
@@ -60,7 +60,12 @@ namespace Pr4PogosyanNikolaeva.Pages
 
         private void btnCalculate_Click(object sender, RoutedEventArgs e)
         {
-            
+            try
+            {
+                x = double.Parse(txtX.Text);
+                y = double.Parse(txtY.Text);
+            }
+            catch { }
             if (x - y == 0)
             {
                 c = Math.Pow( func(x), 2) + Math.Pow( y, 2) + Math.Sin(y);

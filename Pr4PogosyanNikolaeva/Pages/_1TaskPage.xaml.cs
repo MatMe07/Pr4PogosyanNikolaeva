@@ -21,7 +21,7 @@ namespace Pr4PogosyanNikolaeva.Pages
     public partial class _1TaskPage : Page
     {
         public double x = 0, y = 0, z = 0, res = 0;
-        public bool x_znak = false, y_znak = false, z_znak = false;
+        //public bool x_znak = false, y_znak = false, z_znak = false;
 
         public _1TaskPage()
         {
@@ -30,7 +30,13 @@ namespace Pr4PogosyanNikolaeva.Pages
 
         private void BtnCalculate_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                x = double.Parse(TxtBoxX.Text);
+                y = double.Parse(TxtBoxY.Text);
+                z = double.Parse(TxtBoxZ.Text);
+            }
+            catch { }
             try
             {
                 if (Math.Abs(x - y) < 1e-10)

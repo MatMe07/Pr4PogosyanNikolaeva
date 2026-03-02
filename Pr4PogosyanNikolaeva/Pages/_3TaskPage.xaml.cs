@@ -21,7 +21,7 @@ namespace Pr4PogosyanNikolaeva.Pages
     public partial class _3TaskPage : Page
     {
         public double b = 0, x0 = 0, xk = 0, dx = 0;
-        public bool b_znak = false, x0_znak = false, xk_znak = false, dx_znak = false;
+        //public bool b_znak = false, x0_znak = false, xk_znak = false, dx_znak = false;
 
         public _3TaskPage()
         {
@@ -51,6 +51,14 @@ namespace Pr4PogosyanNikolaeva.Pages
 
         private void btnCalculate_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                b = double.Parse(txtB.Text);
+                dx = double.Parse(txtDX.Text);
+                x0 = double.Parse(txtX0.Text);
+                xk = double.Parse(txtXK.Text);
+            }
+            catch { }
             try
             {
                 if (dx <= 0)
@@ -108,10 +116,10 @@ namespace Pr4PogosyanNikolaeva.Pages
             boxAnswer.Clear();
             FunctionChart.Series[0].Points.Clear();
 
-            b_znak = false;
-            x0_znak = false;
-            xk_znak = false;
-            dx_znak = false;
+            //b_znak = false;
+            //x0_znak = false;
+            //xk_znak = false;
+            //dx_znak = false;
         }
 
         private void TxtBoxB_PreviewTextInput(object sender, TextCompositionEventArgs e)
