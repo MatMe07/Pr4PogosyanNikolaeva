@@ -17,11 +17,12 @@ namespace Pr4PogosyanNikolaeva
 
             string newText = num + simv.ToString();
 
-            if (inputText.Contains(".") && newText.Count(c => c == '.') > 1)
+            if (inputText.Contains(",") && newText.Count(c => c == ',') > 1)
                 return false;
 
-            if (simv == ',') return false;
-            
+            if (simv == '.') return false;
+            //if (simv == '.') newText += "0";
+
 
             if (simv == '-')
             {
@@ -71,13 +72,13 @@ namespace Pr4PogosyanNikolaeva
 
 
 
-                if (text.Length > 1 && text[0] == '0' && text[1] != '.')
+                if (text.Length > 1 && text[0] == '0' && text[1] != ',')
                 {
                     text = text.TrimStart('0');
-                    if (string.IsNullOrEmpty(text) || text == ".")
+                    if (string.IsNullOrEmpty(text) || text == ",")
                         text = "0";
                 }
-                else if (text.StartsWith("-0") && text.Length > 2 && text[2] != '.' && text[2] != '0')
+                else if (text.StartsWith("-0") && text.Length > 2 && text[2] != ',' && text[2] != '0')
                 {
                     text = "-" + text.Substring(2).TrimStart('0');
                     if (text == "-" || string.IsNullOrEmpty(text))
