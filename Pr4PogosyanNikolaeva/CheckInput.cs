@@ -39,9 +39,16 @@ namespace Pr4PogosyanNikolaeva
             if (textBox != null)
             {
 
-                string text = textBox.Text;
+                string text = "";
                 int selectionInd = textBox.SelectionStart;
 
+                foreach (char c in textBox.Text)
+                {
+                    if (char.IsDigit(c)  || c == ',' || c=='-')
+                    {
+                        text += c;
+                    }
+                }
 
                 text = text.Replace(" ", "");
 
