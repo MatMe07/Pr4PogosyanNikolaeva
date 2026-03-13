@@ -3,7 +3,7 @@
 namespace BankAccountNS
 {
     /// <summary>
-    /// Bank account demo class.
+    /// Bank account class.
     /// </summary>
     public class BankAccount
     {
@@ -28,6 +28,11 @@ namespace BankAccountNS
             get { return m_balance; }
         }
 
+        /// <summary>
+        /// Метод, который вызывается, когда денежные средства снимаются со счета.
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public void Debit(double amount)
         {
             if (amount > m_balance)
@@ -43,6 +48,11 @@ namespace BankAccountNS
             m_balance += amount;
         }
 
+        /// <summary>
+        /// Метод, который вызывается, когда денежные средства поступают на счет.
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public void Credit(double amount)
         {
             if (amount < 0)
