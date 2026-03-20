@@ -21,7 +21,6 @@ namespace Pr4PogosyanNikolaeva.Pages
     public partial class _3TaskPage : Page
     {
         public double b = 0, x0 = 0, xk = 0, dx = 0;
-        //public bool b_znak = false, x0_znak = false, xk_znak = false, dx_znak = false;
 
         public _3TaskPage()
         {
@@ -38,17 +37,47 @@ namespace Pr4PogosyanNikolaeva.Pages
             FunctionChart.Series.Add(series);
         }
 
-        private double CalculateFunction(double x, double b)
+        
+
+        /// <summary>
+        /// Метод вычисляет значение функции
+        /// </summary>
+        /// <param name="x">Значение переменной x</param>
+        /// <param name="b">Значение параметра b</param>
+        /// <returns></returns>
+        public double CalculateFunction(double x, double bb)
         {
-            if (Math.Abs(x - b) < 1e-10 || Math.Abs(Math.Pow(b, 3) - Math.Pow(x, 3)) < 1e-10)
+            if (Math.Abs(x - bb) < 1e-10 || Math.Abs(Math.Pow(bb, 3) - Math.Pow(x, 3)) < 1e-10)
                 return double.NaN;
 
-
-            return (Math.Sqrt(Math.Abs(x - b))) 
-                / (Math.Pow(Math.Abs(Math.Pow(b, 3) - Math.Pow(x, 3)), 3.0/2.0))
-                + Math.Log(Math.Abs(x - b));
+            return (Math.Sqrt(Math.Abs(x - bb)))
+                / (Math.Pow(Math.Abs(Math.Pow(bb, 3) - Math.Pow(x, 3)), 3.0 / 2.0))
+                + Math.Log(Math.Abs(x - bb));
         }
 
+        /// <summary>
+        /// Метод вычисляет значения точек графика 
+        /// </summary>
+        /// <param name="x0"> Начальное значение x</param>
+        /// <param name="xk"> Конечное значение x</param>
+        /// <param name="dx">Шаг dx</param>
+        /// <param name="b"> Параметр b</param>
+        /// <returns> Список значений x, y </returns>
+        public List<(double x, double y, bool isValid)> TabulateFunction(double xx0, double xxk, double dxx, double bb)
+        {
+            var results = new List<(double x, double y, bool isValid)>();
+
+            for (double x = xx0; x <= xxk + dxx / 2; x += dxx)
+            {
+                double y = CalculateFunction(x, bb);
+                bool isValid = !double.IsNaN(y) && !double.IsInfinity(y);
+                results.Add((x, y, isValid));
+            }
+
+            return results;
+        }
+
+     
         private void btnCalculate_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -58,7 +87,9 @@ namespace Pr4PogosyanNikolaeva.Pages
                 x0 = double.Parse(txtX0.Text);
                 xk = double.Parse(txtXK.Text);
             }
-            catch { }
+            catch
+            { }
+
             try
             {
                 if (dx <= 0)
@@ -75,25 +106,23 @@ namespace Pr4PogosyanNikolaeva.Pages
                     return;
                 }
 
+                var points = TabulateFunction(x0, xk, dx, b);
+
                 boxAnswer.Clear();
                 FunctionChart.Series[0].Points.Clear();
 
-                int i = 0;
-                for (double x = x0; x <= xk; x += dx, i++)
+                for (int i = 0; i < points.Count; i++)
                 {
-                    double y = CalculateFunction(x, b);
-
-                    if (!double.IsNaN(y) && !double.IsInfinity(y))
+                    if (points[i].isValid)
                     {
-                        FunctionChart.Series[0].Points.AddXY(x, y);
-                        boxAnswer.AppendText($"x{i} = {x:F3}\t y{i} = {y:F6}\r\n");
+                        FunctionChart.Series[0].Points.AddXY(points[i].x, points[i].y);
+                        boxAnswer.AppendText($"x{i} = {points[i].x:F3}\t y{i} = {points[i].y:F6}\r\n");
                     }
                     else
                     {
-                        boxAnswer.AppendText($"x{i} = {x:F3}\t y{i} = не определено (разрыв)\r\n");
+                        boxAnswer.AppendText($"x{i} = {points[i].x:F3}\t y{i} = не определено (разрыв)\r\n");
                     }
                 }
-
 
                 if (FunctionChart.Series[0].Points.Count > 0)
                 {
@@ -102,10 +131,11 @@ namespace Pr4PogosyanNikolaeva.Pages
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка",
+                MessageBox.Show($"Ошибка вычисления: {ex.Message}", "Ошибка",
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
@@ -120,10 +150,6 @@ namespace Pr4PogosyanNikolaeva.Pages
             xk = 0;
             dx = 0;
 
-            //b_znak = false;
-            //x0_znak = false;
-            //xk_znak = false;
-            //dx_znak = false;
         }
 
         private void TxtBoxB_PreviewTextInput(object sender, TextCompositionEventArgs e)

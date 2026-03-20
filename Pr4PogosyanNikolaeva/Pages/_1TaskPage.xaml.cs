@@ -21,7 +21,6 @@ namespace Pr4PogosyanNikolaeva.Pages
     public partial class _1TaskPage : Page
     {
         public double x = 0, y = 0, z = 0, res = 0;
-        //public bool x_znak = false, y_znak = false, z_znak = false;
 
         public _1TaskPage()
         {
@@ -38,26 +37,8 @@ namespace Pr4PogosyanNikolaeva.Pages
             }
             catch { }
             try
-            {
-                if (Math.Abs(x - y) < 1e-10)
-                {
-                    MessageBox.Show("Ошибка: деление на ноль (|x-y| = 0)", "Ошибка",
-                        MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
-                if (Math.Abs(Math.Cos(z) % Math.PI) < 1e-10)
-                {
-                    MessageBox.Show("Ошибка: тангенс не определен (cos(z) = 0)", "Ошибка",
-                        MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
-
-                res = (Math.Pow(
-                    y + Math.Pow(x - 1, (1.0 / 3.0)), (1.0 / 4.0)))
-                    /
-                    (Math.Abs(x - y) * (
-                    Math.Pow(Math.Sin(z), 2)
-                    + Math.Tan(z)));
+            {               
+                res = Calculate(x, y, z);
                 TxtBoxRes.Text = res.ToString();
             }
             catch (Exception ex)
@@ -65,8 +46,39 @@ namespace Pr4PogosyanNikolaeva.Pages
                 MessageBox.Show($"Ошибка вычисления: {ex.Message}");
             }
 
-         
+            TxtBoxRes.Text = res.ToString();
 
+        }
+
+
+        /// <summary>
+        /// Метод выполняет расчет функции по введенным x, y, z
+        /// </summary>
+        /// <param name="xx">Значение переменной x </param>
+        /// <param name="yy">Значение переменной y </param>
+        /// <param name="zz">Значение переменной z </param>
+        /// <returns>Результат вычисления выражения</returns>
+        public double Calculate(double xx,  double yy, double zz)
+        {
+            
+            if (Math.Abs(xx - yy) < 1e-10)
+            {
+                throw new ArgumentException("Деление на ноль (|x-y| = 0)");
+            }
+            if (Math.Abs(Math.Cos(zz) % Math.PI) < 1e-10)
+            {
+                throw new ArgumentException("Тангенс не определен (cos(z) = 0)");
+            }
+
+            double ress = (Math.Pow(
+                yy + Math.Pow(xx - 1, (1.0 / 3.0)), (1.0 / 4.0)))
+                /
+                (Math.Abs(xx - yy) * (
+                Math.Pow(Math.Sin(zz), 2)
+                + Math.Tan(zz)));
+
+            return ress;
+           
         }
 
         
@@ -74,7 +86,6 @@ namespace Pr4PogosyanNikolaeva.Pages
         private void TxtBoxX_TextChanged(object sender, TextChangedEventArgs e)
         {
             CheckInput.CheckNullOrWSpace(sender as TextBox);
-
 
         }
 
@@ -96,7 +107,6 @@ namespace Pr4PogosyanNikolaeva.Pages
         {
             e.Handled = !CheckInput.Check(e.Text[0], TxtBoxX.Text, out x);
             
-            //TxtBoxX.Text = x.ToString();
         }
 
         private void TxtBoxY_PreviewTextInput(object sender, TextCompositionEventArgs e)

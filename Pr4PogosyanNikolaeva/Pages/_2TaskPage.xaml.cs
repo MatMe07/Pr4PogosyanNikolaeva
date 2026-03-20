@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xaml;
 
 namespace Pr4PogosyanNikolaeva.Pages
 {
@@ -23,9 +24,7 @@ namespace Pr4PogosyanNikolaeva.Pages
 
         public double c = 0;
         public double x = 0;
-        //public bool x_znak = false;
         public double y = 0;
-        //public bool y_znak = false;
         public Func<double, double> func;
         public _2TaskPage()
         {
@@ -69,20 +68,27 @@ namespace Pr4PogosyanNikolaeva.Pages
                 y = double.Parse(txtY.Text);
             }
             catch { }
-            if (x - y == 0)
+            c = Calculate(x, y);
+            boxAnswer.Text = c.ToString();
+        }
+
+        public double Calculate(double xx, double yy)
+        {
+            double res;
+            if (xx - yy == 0)
             {
-                c = Math.Pow( func(x), 2) + Math.Pow( y, 2) + Math.Sin(y);
+                res = Math.Pow(func(xx), 2) + Math.Pow(yy, 2) + Math.Sin(yy);
             }
-            else if (x - y > 0)
+            else if (xx - yy > 0)
             {
-                c = Math.Pow( func(x) - y, 2) + Math.Cos(y);
+                res = Math.Pow(func(xx) - yy, 2) + Math.Cos(yy);
 
             }
             else
             {
-                c = Math.Pow( y - func(x), 2) + Math.Tan(y);
+                res = Math.Pow(yy - func(xx), 2) + Math.Tan(yy);
             }
-            boxAnswer.Text = c.ToString();
+            return res;
         }
 
         private void txtX_TextChanged(object sender, TextChangedEventArgs e)
