@@ -41,8 +41,6 @@ namespace Pr4PogosyanNikolaeva.Pages
             x = 0;
             y = 0;
             c = 0;
-            
-
         }
 
         public double Sh(double n)
@@ -68,25 +66,25 @@ namespace Pr4PogosyanNikolaeva.Pages
                 y = double.Parse(txtY.Text);
             }
             catch { }
-            c = Calculate(x, y);
+            c = Calculate(x, y, func);
             boxAnswer.Text = c.ToString();
         }
 
-        public double Calculate(double xx, double yy)
+        public double Calculate(double xx, double yy, Func<double, double> f)
         {
             double res;
             if (xx - yy == 0)
             {
-                res = Math.Pow(func(xx), 2) + Math.Pow(yy, 2) + Math.Sin(yy);
+                res = Math.Pow(f(xx), 2) + Math.Pow(yy, 2) + Math.Sin(yy);
             }
             else if (xx - yy > 0)
             {
-                res = Math.Pow(func(xx) - yy, 2) + Math.Cos(yy);
+                res = Math.Pow(f(xx) - yy, 2) + Math.Cos(yy);
 
             }
             else
             {
-                res = Math.Pow(yy - func(xx), 2) + Math.Tan(yy);
+                res = Math.Pow(yy - f(xx), 2) + Math.Tan(yy);
             }
             return res;
         }

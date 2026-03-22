@@ -22,7 +22,7 @@ namespace Pr4PogosyanNikolaeva
 
             if (simv == '.') return false;
             //if (simv == '.') newText += "0";
-
+            //Math.
 
             if (simv == '-')
             {
