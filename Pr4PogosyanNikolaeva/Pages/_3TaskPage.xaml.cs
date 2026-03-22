@@ -71,7 +71,7 @@ namespace Pr4PogosyanNikolaeva.Pages
             {
                 double y = CalculateFunction(x, bb);
                 bool isValid = !double.IsNaN(y) && !double.IsInfinity(y);
-                results.Add((x, y, isValid));
+                results.Add((Math.Round( x, 3), Math.Round(y, 3), isValid));
             }
 
             return results;
