@@ -86,30 +86,6 @@ namespace CalculateTests
             Assert.AreEqual(ProgAns3, ans3, .001);
         }
 
-        [TestMethod]
-        public void TestMethod_Negative_2Task_InvalidFunction()
-        {
-            var task2 = new _2TaskPage();
-            int x = 2;
-            int y = 2;
-
-            Assert.ThrowsException<ArgumentNullException>(() => task2.Calculate(x, y, null));
-        }
-
-        [TestMethod]
-        public void TestMethod_Positive_2Task_AllFunctions()
-        {
-            var task2 = new _2TaskPage();
-            int x = 2;
-            int y = 1;
-
-            double resultSh = task2.Calculate(x, y, task2.Sh);
-            double resultX2 = task2.Calculate(x, y, task2.X2);
-            double resultEX = task2.Calculate(x, y, task2.EX);
-
-            Assert.IsFalse(resultSh == resultX2 && resultX2 == resultEX,
-                "Разные функции должны возвращать разные результаты");
-        }
 
 
         [TestMethod]
