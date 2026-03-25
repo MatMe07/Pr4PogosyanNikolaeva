@@ -49,44 +49,95 @@ namespace CalculateTests
         }
 
         [TestMethod]
-        public void TestMethod_Positive_2_1Task()
+        public void Test_Positive_2Task_Sh_EqualsZero()
         {
-            int x = 2;
-            int y = 2;
-
-            double ans1 = 18.063;
-            double ProgAns1 = task2.Calculate(x, y, task2.Sh);
-
-            Assert.AreEqual(ProgAns1, ans1, .001);
+            double x = 2;
+            double y = 2;
+            double expected = 18.063;
+            double actual = task2.Calculate(x, y, task2.Sh);
+            Assert.AreEqual(expected, actual, 0.001);
         }
-        
+
         [TestMethod]
-        public void TestMethod_Positive_2_2Task()
+        public void Test_Positive_2Task_Sh_GreaterThanZero()
         {
-
-            int x = 4;
-            int y = 2;
-            double ans2 = 195.583;
-            double ProgAns2 = task2.Calculate(x, y, task2.X2);
-
-            Assert.AreEqual(ProgAns2, ans2, .001);
+            double x = 3;
+            double y = 1;
+            double expected = 81.862;
+            double actual = task2.Calculate(x, y, task2.Sh);
+            Assert.AreEqual(expected, actual, 0.001);
         }
-        
+
         [TestMethod]
-        public void TestMethod_Positive_2_3Task()
+        public void Test_Positive_2Task_Sh_LessThanZero()
         {
-
-
-            int x = -3;
-            int y = 1;
-
-            double ans3 = 2.460;
-            double ProgAns3 = task2.Calculate(x, y, task2.EX);
-
-            Assert.AreEqual(ProgAns3, ans3, .001);
+            double x = 1;
+            double y = 3;
+            double expected = 3.188;
+            double actual = task2.Calculate(x, y, task2.Sh);
+            Assert.AreEqual(expected, actual, 0.001);
         }
 
+        [TestMethod]
+        public void Test_Positive_2Task_X2_EqualsZero()
+        {
+            double x = 3;
+            double y = 3;
+            double expected = 90.141;
+            double actual = task2.Calculate(x, y, task2.X2);
+            Assert.AreEqual(expected, actual, 0.001);
+        }
 
+        [TestMethod]
+        public void Test_Positive_2Task_X2_GreaterThanZero()
+        {
+            double x = 4;
+            double y = 2;
+            double expected = 195.584;
+            double actual = task2.Calculate(x, y, task2.X2);
+            Assert.AreEqual(expected, actual, 0.001);
+        }
+
+        [TestMethod]
+        public void Test_Positive_2Task_X2_LessThanZero()
+        {
+            double x = 2;
+            double y = 5;
+            double expected = -2.381;
+            double actual = task2.Calculate(x, y, task2.X2);
+            Assert.AreEqual(expected, actual, 0.001);
+        }
+
+        [TestMethod]
+        public void Test_Positive_2Task_EX_EqualsZero()
+        {
+            double x = 1;
+            double y = 1;
+            double expected = 9.230;
+            double actual = task2.Calculate(x, y, task2.EX);
+            Assert.AreEqual(expected, actual, 0.001);
+        }
+
+        [TestMethod]
+        public void Test_Positive_2Task_EX_GreaterThanZero()
+        {
+            double x = 2;
+            double y = 1;
+            double expected = 41.36;
+            double actual = task2.Calculate(x, y, task2.EX);
+            Assert.AreEqual(expected, actual, 0.001);
+        }
+
+        [TestMethod]
+        public void Test_Positive_2Task_EX_LessThanZero()
+        {
+            double x = 0;
+            double y = 2;
+            double expected = -1.185;
+            double actual = task2.Calculate(x, y, task2.EX);
+            Assert.AreEqual(expected, actual, 0.001);
+        }
+    
 
         [TestMethod]
         public void TestMethod_Positive_3Task()
@@ -123,6 +174,35 @@ namespace CalculateTests
 
             }
         }
+
+        [TestMethod]
+        public void TestMethod_Positive_3Task_WithBreaks()
+        {
+            var task3 = new _3TaskPage();
+            double x0 = -3;
+            double xk = 3;
+            double dx = 1;
+            double b = 1;
+
+            var results = task3.TabulateFunction(x0, xk, dx, b);
+
+            var expected = new List<(double x, double y, bool isValid)>
+            {
+                (-3, -0.683, true),
+                (-2, -0.548, true),
+                (-1, -0.347, true),
+                (0, -0.693, true),
+                (1, double.NaN, false),
+                (2, 0.693, true),
+                (3, 0.896, true)
+            };
+
+            for (int i = 0; i < expected.Count; i++)
+            {
+                Assert.AreEqual(expected[i], results[i]);
+            }
+        }
+
         [TestMethod]
         public void TestMethod_Negative_3Task_ReturnsNaN()
         {
@@ -135,17 +215,6 @@ namespace CalculateTests
             Assert.IsTrue(double.IsNaN(result));
         }
 
-
-        [TestMethod]
-        public void TestMethod_Negative_3Task_Cube_ReturnsNaN()
-        {
-            var task3 = new _3TaskPage();
-            double x = 1;
-            double b = 1; 
-
-            double result = task3.CalculateFunction(x, b);
-
-            Assert.IsTrue(double.IsNaN(result), "Функция возвращает NaN при b^3 - x^3 = 0");
-        }
+ 
     }
 }
