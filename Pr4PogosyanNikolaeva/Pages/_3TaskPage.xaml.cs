@@ -43,7 +43,7 @@ namespace Pr4PogosyanNikolaeva.Pages
         /// Метод вычисляет значение функции
         /// </summary>
         /// <param name="x">Значение переменной x</param>
-        /// <param name="b">Значение параметра b</param>
+        /// <param name="bb">Значение параметра b</param>
         /// <returns></returns>
         public double CalculateFunction(double x, double bb)
         {

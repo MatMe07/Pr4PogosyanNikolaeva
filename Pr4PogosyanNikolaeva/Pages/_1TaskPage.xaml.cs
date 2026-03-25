@@ -63,7 +63,7 @@ namespace Pr4PogosyanNikolaeva.Pages
             
             if (Math.Abs(xx - yy) < 1e-10)
             {
-                throw new ArgumentException("Деление на ноль (|x-y| = 0)");
+                throw new DivideByZeroException("Деление на ноль (|x-y| = 0)");
             }
             if (Math.Abs(Math.Cos(zz) % Math.PI) < 1e-10)
             {

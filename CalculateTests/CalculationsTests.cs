@@ -11,7 +11,7 @@ namespace CalculateTests
         _2TaskPage task2 = new _2TaskPage();
 
         [TestMethod]
-        public void TestMethod1Task()
+        public void TestMethod_Positive_1Task()
         {
             var task1 = new _1TaskPage();
             int x = 2;
@@ -25,7 +25,31 @@ namespace CalculateTests
         }
 
         [TestMethod]
-        public void TestMethod2_1Task()
+        public void TestMethod_Negative_DivisionByZero_1Task()
+        {
+            var task1 = new _1TaskPage();
+            int x = 0;
+            int y = 0;
+            int z = 0;
+
+            Assert.ThrowsException<System.DivideByZeroException>(() => task1.Calculate(x, y, z));
+
+        }
+
+        [TestMethod]
+        public void TestMethod_Negative_1Task_Tang()
+        {
+            var task1 = new _1TaskPage();
+            double x = 2;
+            double y = 3;
+            double z = Math.PI / 2; 
+
+            Assert.ThrowsException<System.ArgumentException>(() => task1.Calculate(x, y, z), "Тангенс не определен (cos(z) = 0)");
+
+        }
+
+        [TestMethod]
+        public void TestMethod_Positive_2_1Task()
         {
             int x = 2;
             int y = 2;
@@ -35,8 +59,9 @@ namespace CalculateTests
 
             Assert.AreEqual(ProgAns1, ans1, .001);
         }
+        
         [TestMethod]
-        public void TestMethod2_2Task()
+        public void TestMethod_Positive_2_2Task()
         {
 
             int x = 4;
@@ -46,8 +71,9 @@ namespace CalculateTests
 
             Assert.AreEqual(ProgAns2, ans2, .001);
         }
+        
         [TestMethod]
-        public void TestMethod2_3Task()
+        public void TestMethod_Positive_2_3Task()
         {
 
 
@@ -60,9 +86,34 @@ namespace CalculateTests
             Assert.AreEqual(ProgAns3, ans3, .001);
         }
 
+        [TestMethod]
+        public void TestMethod_Negative_2Task_InvalidFunction()
+        {
+            var task2 = new _2TaskPage();
+            int x = 2;
+            int y = 2;
+
+            Assert.ThrowsException<ArgumentNullException>(() => task2.Calculate(x, y, null));
+        }
 
         [TestMethod]
-        public void TestMethod3Task()
+        public void TestMethod_Positive_2Task_AllFunctions()
+        {
+            var task2 = new _2TaskPage();
+            int x = 2;
+            int y = 1;
+
+            double resultSh = task2.Calculate(x, y, task2.Sh);
+            double resultX2 = task2.Calculate(x, y, task2.X2);
+            double resultEX = task2.Calculate(x, y, task2.EX);
+
+            Assert.IsFalse(resultSh == resultX2 && resultX2 == resultEX,
+                "Разные функции должны возвращать разные результаты");
+        }
+
+
+        [TestMethod]
+        public void TestMethod_Positive_3Task()
         {
             double x = 1;
             double b = 2;
@@ -75,7 +126,7 @@ namespace CalculateTests
         }
 
         [TestMethod]
-        public void TestMethod3_ListTask()
+        public void TestMethod_Positive_3_ListTask()
         {
             double x0 = -1;
             double dx = 1;
@@ -96,6 +147,29 @@ namespace CalculateTests
 
             }
         }
+        [TestMethod]
+        public void TestMethod_Negative_3Task_ReturnsNaN()
+        {
+            var task3 = new _3TaskPage();
+            double x = 2;
+            double b = 2; 
 
+            double result = task3.CalculateFunction(x, b);
+
+            Assert.IsTrue(double.IsNaN(result));
+        }
+
+
+        [TestMethod]
+        public void TestMethod_Negative_3Task_Cube_ReturnsNaN()
+        {
+            var task3 = new _3TaskPage();
+            double x = 1;
+            double b = 1; 
+
+            double result = task3.CalculateFunction(x, b);
+
+            Assert.IsTrue(double.IsNaN(result), "Функция возвращает NaN при b^3 - x^3 = 0");
+        }
     }
 }
