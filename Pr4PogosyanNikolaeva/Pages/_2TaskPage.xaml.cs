@@ -70,6 +70,14 @@ namespace Pr4PogosyanNikolaeva.Pages
             boxAnswer.Text = c.ToString();
         }
 
+        /// <summary>
+        /// Метод выполняет расчет функции по введенным x, y и функции
+        /// </summary>
+        /// <param name="xx">Значение переменной x </param>
+        /// <param name="yy">Значение переменной y </param>
+        /// <param name="f">Выбранная функция </param>
+        /// <returns>Результат вычисления выражения</returns>
+
         public double Calculate(double xx, double yy, Func<double, double> f)
         {
             double res;
