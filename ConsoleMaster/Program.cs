@@ -15,10 +15,10 @@ namespace ConsoleMaster
         }
 
         /// <summary>
-        /// 
+        /// Вычисляет n-ное число в последовательности Фибоначчи.
         /// </summary>
-        /// <param name="n"></param>
-        /// <returns></returns>
+        /// <param name="n">Порядковый номер числа Фибоначчи.</param>
+        /// <returns>Значение n-ного числа Фибоначчи.</returns>
         static int Fibonacci(int n)
         {
             Console.WriteLine("The output is: ");
