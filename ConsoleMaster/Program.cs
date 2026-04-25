@@ -22,6 +22,12 @@ namespace ConsoleMaster
             Console.ReadKey();
         }
 
+
+        /// <summary>
+        /// Отправляет приветственное сообщение с указанием имени и числа.
+        /// </summary>
+        /// <param name="name">Имя получателя сообщения.</param>
+        /// <param name="msg">Число</param>
         static void SendMessage(string name, int msg)
         {
             Console.WriteLine("Hello, " + name + "! Count to " + msg);
