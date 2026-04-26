@@ -47,7 +47,7 @@ namespace ConsoleMaster
         public string Name { get; set; }
 
         public double MegaLightYears { get; set; }
-        public object GalaxyType { get; set; }
+        public GType GalaxyType { get; set; }
 
     }
 
@@ -63,7 +63,7 @@ namespace ConsoleMaster
                 case 'E':
                     MyGType = Type.Elliptical;
                     break;
-                case 'l':
+                case 'I':
                     MyGType = Type.Irregular;
                     break;
                 case 'L':
