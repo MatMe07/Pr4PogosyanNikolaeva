@@ -15,6 +15,9 @@ namespace ConsoleMaster
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Перебирает список галактик и выводит информацию о каждой в консоль.
+        /// </summary>
         private static void IterateThroughList()
         {
             var theGalaxies = new List<Galaxy>
@@ -41,7 +44,6 @@ namespace ConsoleMaster
             //  Maffei 1,  11,  Elliptical
         }
     }
-
     public class Galaxy
     {
         public string Name { get; set; }
