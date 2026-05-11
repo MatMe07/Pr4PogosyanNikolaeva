@@ -5,8 +5,105 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pr4PogosyanNikolaeva"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="450" Width="600" 
+        ResizeMode="NoResize">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" 
+                   Text="Матричный шифр (Перестановочный)" 
+                   FontWeight="Bold" FontSize="14" 
+                   HorizontalAlignment="Center" Margin="0 0 0 15"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" 
+                   Text="Действие:" 
+                   VerticalAlignment="Center" Margin="0,0,0,5"/>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" 
+                    Orientation="Horizontal" Margin="0 0 0 5">
+            <RadioButton 
+                         Content="Шифровать" 
+                         IsChecked="True"
+                         Margin="0 0 20 0" Checked="rbEncryptDecrtypt_Checked"/>
+            <RadioButton Content="Дешифровать" Checked="rbEncryptDecrtypt_Checked"/>
+        </StackPanel>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" 
+                   Text="Текст:" 
+                   VerticalAlignment="Top" Margin="0 5"/>
+
+        <TextBox x:Name="txtInput" 
+                 Grid.Row="2" Grid.Column="1" 
+                 Height="60" 
+                 TextWrapping="Wrap" 
+                 AcceptsReturn="True"
+                 VerticalScrollBarVisibility="Auto"
+                 Margin="0 5"
+                 ToolTip="Введите текст для шифрования или дешифрования" TextChanged="txtInput_TextChanged"/>
+
+        <TextBlock Grid.Row="3" Grid.Column="0" 
+                   Text="Строк (rows):" 
+                   VerticalAlignment="Center" Margin="0 5"/>
+
+        <TextBox x:Name="txtRows" 
+                 Grid.Row="3" Grid.Column="1" 
+                 Width="100" 
+                 HorizontalAlignment="Left"
+                 Text="{Binding Row}"
+                 Margin="0 5"
+                 ToolTip="Количество строк матрицы (целое число > 0)" PreviewTextInput="txtRowsCol_PreviewTextInput" TextChanged="txtRowsColum_TextChanged"/>
+
+        <TextBlock Grid.Row="4" Grid.Column="0" 
+                   Text="Столбцов (cols):" 
+                   VerticalAlignment="Center" Margin="0 5"/>
+
+        <TextBox x:Name="txtCols" 
+                 Grid.Row="4" Grid.Column="1" 
+                 Width="100" 
+                 HorizontalAlignment="Left"
+                 Text="{Binding Col}"
+                 Margin="0,5"
+                 ToolTip="Количество столбцов матрицы (целое число > 0)" TextChanged="txtRowsColum_TextChanged" PreviewTextInput="txtRowsCol_PreviewTextInput"/>
+
+        <Button x:Name="btnExecute" Click="btnExecute_Click"
+                Grid.Row="5" Grid.ColumnSpan="2" 
+                Content="Выполнить"
+                Height="35"
+                Width="120"
+                HorizontalAlignment="Center"
+                Margin="0 15"
+                IsEnabled="False"
+                ToolTip="Выполнить выбранное действие"/>
+
+        <StackPanel Height="1" Grid.Row="6" Grid.ColumnSpan="2" 
+                   Margin="0 10" Background="#FFA0A0A0"/>
+
+        <TextBlock Grid.Row="7" Grid.Column="0" 
+                   Text="Результат:" 
+                   VerticalAlignment="Top" Margin="0,5"/>
+
+        <TextBox x:Name="txtResult" 
+                 Grid.Row="7" Grid.Column="1" 
+                 Height="60" 
+                 TextWrapping="Wrap"
+                 IsReadOnly="True"
+                 VerticalScrollBarVisibility="Auto"
+                 Margin="0 5"
+                 ToolTip="Результат шифрования или дешифрования" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>

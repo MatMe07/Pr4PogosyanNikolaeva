@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Pr4PogosyanNikolaeva
 {
@@ -20,9 +21,128 @@ namespace Pr4PogosyanNikolaeva
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Func<string, int, int, string> FuncEncDecr { get; set; }
+        public int Row { get; set; } = 1;
+        public int Col { get; set; } = 1;
         public MainWindow()
         {
+            DataContext = this;
             InitializeComponent();
+        }
+
+        private void ValidateInputs()
+        {
+            bool isTextValid = !string.IsNullOrWhiteSpace(txtInput?.Text);
+            bool isRowsValid = !string.IsNullOrWhiteSpace(txtRows?.Text);
+            bool isColsValid = !string.IsNullOrWhiteSpace(txtCols?.Text);
+
+            if (btnExecute != null)
+                btnExecute.IsEnabled = isTextValid && isRowsValid && isColsValid;
+        }
+
+        private void txtInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ValidateInputs();
+        }
+
+        private void txtRowsCol_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !int.TryParse(e.Text, out int n);
+
+        }
+
+        private void txtRowsColum_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ValidateInputs();
+            var txtBox = (TextBox)sender;
+            if (string.IsNullOrWhiteSpace(txtBox?.Text))
+            {
+                txtBox.Text = "1";
+                txtBox.SelectionLength = 1;
+            }
+        }
+
+        public string Encrypt(string text, int row, int col)
+        {
+            int matrSize = row * col;
+            text = text.PadRight(matrSize);
+            string Cipher = "";
+            for (int j = 0; j < col; j++)
+            {
+                for (int i = 0; i < row; i++)
+                {
+                    Cipher += text[i * col + j];
+                }
+            }
+            return Cipher;
+        }
+        public string Decrypt(string text, int row, int col)
+        {
+            int matrSize = row * col;
+            text = text.PadRight(matrSize);
+            string Cipher = "";
+            for (int i = 0; i < row; i++)
+            {
+                for (int j = 0; j < col; j++)
+                {
+                    Cipher += text[j * row + i];
+                }
+            }
+            return Cipher.TrimStart(' ').TrimEnd(' ');
+        }
+
+        public string MatrixCipher(string text, int row, int col, Func<string, int, int, string> func)
+        {
+            if (row <= 0)
+                throw new ArgumentException("Количество строк должно быть больше 0", nameof(row));
+
+            if (col <= 0)
+                throw new ArgumentException("Количество столбцов должно быть больше 0", nameof(col));
+
+            int matrixSize = row * col;
+            if (matrixSize < text.Length)
+                throw new ArgumentException(
+                    $"Размер матрицы ({row}*{col} = {matrixSize}) меньше длины текста ({text.Length} символов). ");
+
+            string Cipher = func(text, row, col);
+            return Cipher;
+        }
+
+        private void rbEncryptDecrtypt_Checked(object sender, RoutedEventArgs e)
+        {
+            switch((sender  as RadioButton).Content)
+            {
+                case "Шифровать":
+                    {
+                        FuncEncDecr = Encrypt;
+                        break;
+                    }
+                case "Дешифровать":
+                    {
+                        FuncEncDecr = Decrypt;
+                        break;
+                    }
+            } 
+        }
+
+
+
+        private void btnExecute_Click(object sender, RoutedEventArgs e)
+        {
+
+            try
+            {
+                string encrypted = MatrixCipher(txtInput.Text, Row, Col, FuncEncDecr);
+                txtResult.Text = encrypted;
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка валидации", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Неизвестная ошибка: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
