@@ -55,10 +55,16 @@ namespace Pr4PogosyanNikolaeva
         {
             ValidateInputs();
             var txtBox = (TextBox)sender;
+            
             if (string.IsNullOrWhiteSpace(txtBox?.Text))
             {
                 txtBox.Text = "1";
                 txtBox.SelectionLength = 1;
+            }
+            else
+            {
+                txtBox.Text = txtBox.Text.TrimEnd();
+                txtBox.CaretIndex = txtBox.Text.Length;
             }
         }
         /// <summary>
@@ -165,6 +171,14 @@ namespace Pr4PogosyanNikolaeva
             {
                 MessageBox.Show($"Неизвестная ошибка: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            txtRows.Text = "1";
+            txtCols.Text = "1";
+            txtInput.Text = "";
+            txtResult.Text = "";
         }
     }
 }
