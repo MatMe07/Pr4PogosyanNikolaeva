@@ -61,7 +61,13 @@ namespace Pr4PogosyanNikolaeva
                 txtBox.SelectionLength = 1;
             }
         }
-
+        /// <summary>
+        /// Шифрует текст методом матричной перестановки
+        /// </summary>
+        /// <param name="text">Исходный текст для шифрования</param>
+        /// <param name="row">Количество строк матрицы</param>
+        /// <param name="col">Количество столбцов матрицы</param>
+        /// <returns>Зашифрованная строка</returns>
         public string Encrypt(string text, int row, int col)
         {
             int matrSize = row * col;
@@ -76,6 +82,13 @@ namespace Pr4PogosyanNikolaeva
             }
             return Cipher;
         }
+        /// <summary>
+        /// Дешифрует текст
+        /// </summary>
+        /// <param name="text">Зашифрованный текст</param>
+        /// <param name="row">Количество строк матрицы</param>
+        /// <param name="col">Количество столбцов матрицы</param>
+        /// <returns>Расшифрованная строка</returns>
         public string Decrypt(string text, int row, int col)
         {
             int matrSize = row * col;
@@ -91,6 +104,15 @@ namespace Pr4PogosyanNikolaeva
             return Cipher.TrimStart(' ').TrimEnd(' ');
         }
 
+        /// <summary>
+        /// Выполняет шифрование или дешифрование с предварительной валидацией входных параметров
+        /// </summary>
+        /// <param name="text">Входной текст</param>
+        /// <param name="row">Количество строк матрицы (должно быть > 0)</param>
+        /// <param name="col">Количество столбцов матрицы (должно быть > 0)</param>
+        /// <param name="func">Функция шифрования или дешифрования</param>
+        /// <returns>Результат шифрования или дешифрования</returns>
+        /// <exception cref="ArgumentException">Выбрасывается при row <= 0, col <= 0 или если размер матрицы меньше длины текста</exception>
         public string MatrixCipher(string text, int row, int col, Func<string, int, int, string> func)
         {
             if (row <= 0)
