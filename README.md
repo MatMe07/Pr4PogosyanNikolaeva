@@ -17,3 +17,4 @@
 10. **Окно «Стек вызовов»**
 11. **Выполнить до щелчка**
 12. **Перезапуск отладчика**
+<img width="834" height="327" alt="image" src="https://github.com/user-attachments/assets/7522c973-b2db-49d6-addd-c5330b6a3cd9" />
